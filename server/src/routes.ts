@@ -96,15 +96,16 @@ export async function appRoutes(app: FastifyInstance) {
           date: today,
         }
       })
-      
-      const dayHabit = await prisma.dayHabit.findUnique({
-        where: {
-          day_id_habit_id:{
-            day_id: day.id,
-            habit_id: id,
-          }
+    }
+
+    const dayHabit = await prisma.dayHabit.findUnique({
+      where: {
+        day_id_habit_id: {
+          day_id: day.id,
+          habit_id: id,
         }
-      })
+      }
+    })
 
     if (dayHabit) {
       await prisma.dayHabit.delete({
@@ -120,6 +121,5 @@ export async function appRoutes(app: FastifyInstance) {
         }
       })
     }
-    }
-  })
+    })
 }
