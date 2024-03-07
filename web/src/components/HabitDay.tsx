@@ -18,7 +18,7 @@ export function HabitDay({
   completed = 0, 
   amount = 0
 }: HabitDayProps) {
-  const completedPercentege = amount > 0 ? Math.round((completed / amount) * 100) : 0
+  const completedPercentage = amount > 0 ? Math.round((completed / amount) * 100) : 0
 
   const dayOfWeek = dayjs(date).format('dddd')
   const dayAndMonth = dayjs(date).format('DD/MM')
@@ -27,12 +27,17 @@ export function HabitDay({
     <Popover.Root>
       <Popover.Trigger
         className={clsx('w-10 h-10border-2 rounded-lg', {
-          'bg-zinc-900 border-zinc-800': completedPercentege === 0,
-          'bg-violet-900 border-violet-700': completedPercentege > 0 && completedPercentege < 20,
-          'bg-violet-800 border-violet-600': completedPercentege >= 20 && completedPercentege < 40,
-          'bg-violet-700 border-violet-500': completedPercentege >= 40 && completedPercentege < 60,
-          'bg-violet-600 border-violet-500': completedPercentege >= 60 && completedPercentege < 80,
-          'bg-violet-500 border-violet-400': completedPercentege >= 80,
+          "bg-zinc-900 border-zinc-800":
+            completedPercentage === 0,
+          "bg-violet-900 border-violet-700":
+            completedPercentage > 0 && completedPercentage < 20,
+          "bg-violet-800 border-violet-600":
+            completedPercentage >= 20 && completedPercentage < 40,
+          "bg-violet-700 border-violet-500":
+            completedPercentage >= 40 && completedPercentage < 60,
+          "bg-violet-600 border-violet-500":
+            completedPercentage >= 60 && completedPercentage < 80,
+          "bg-violet-500 border-violet-400": completedPercentage >= 80,
         })}
        />
 
@@ -41,7 +46,7 @@ export function HabitDay({
           <span className="font-semibold text-zinc-400">{dayOfWeek}</span>
           <span className='mt-1 font-extrabold leading-tight text-3xl'>{dayAndMonth}</span>
 
-          <ProgressBar progress={completedPercentege}  />
+          <ProgressBar progress={completedPercentage}  />
 
           <div className="mt-6 flex flex-col gap-3">
             <Checkbox.Root
